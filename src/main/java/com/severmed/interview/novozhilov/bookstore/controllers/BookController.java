@@ -9,8 +9,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 /**
  *
  * - Получение списка книг по id cтеллажа, либо по номеру уровня, либо по обоим параметрам одновременно
@@ -42,8 +40,9 @@ public class BookController {
 
     //- Поиск книги в хранилище по ее названию
     @PostMapping("/books/findByBookName")
-    List<Book> searchBooks(@RequestBody BookSmall smallBook){
-        return bookService.searchBooks(smallBook);
+    Page<Book> searchBooks(@RequestBody BookSmall smallBook,
+                           Pageable pageable){
+        return bookService.searchBooks(smallBook, pageable);
     }
 
     //- Получение книги по ее id

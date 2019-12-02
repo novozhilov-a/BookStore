@@ -2,13 +2,10 @@ package com.severmed.interview.novozhilov.bookstore.service;
 
 import com.severmed.interview.novozhilov.bookstore.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class BookService {
@@ -46,10 +43,8 @@ public class BookService {
         return booksRepo.save(book);
     }
 
-    public List<Book> searchBooks(BookSmall smallBook) {
-        Book searchBook = new Book();
-        searchBook.setName(smallBook.getName());
-        return booksRepo.findAll(Example.of(searchBook));
+    public Page<Book> searchBooks(BookSmall smallBook, Pageable pageable) {
+        return booksRepo.findByNameContaining(smallBook.getName(), pageable);
     }
 
     public Book getBookById(Long id) {
