@@ -24,7 +24,7 @@
 База данных франится в файле [h2.db.mv.db](./h2.db.mv.db) и наполнена некоторыми тестовыми значениями.
 
 ### SOAP UI
-Для тестов можно использовать soap ui проект [Bookstore-soapui-project](Bookstore-soapui-project). В нем есть примеры вызова всех операций.
+Для тестов можно использовать soap ui проект [Bookstore-soapui-project.xml](Bookstore-soapui-project.xml). В нем есть примеры вызова всех операций.
 
 ### Описание REST API
 
